@@ -5,7 +5,7 @@
     
 
 
-<tags:template title="Lista de Animes">
+<div class="container"><tags:template title="Lista de Animes">
 
 <jsp:body>
 <c:if test="${not empty msg }">
@@ -14,12 +14,13 @@ ${msg }
 </div>
 </c:if>
 
-<table>
+<table class="table">
 <tr>
  <th>Nome</th>
  <th>Personagem</th>
  <th>Episodios</th>
  <th>Trilha Sonora</th>
+ 
  </tr>
 <c:forEach items="${listao}"  var="v">
  <tr>
@@ -27,9 +28,12 @@ ${msg }
  <td>${v.personagemPrincipal}</td>
  <td>${v.episodios}</td>
  <td>${v.trilhasonora}</td>
+ <td> <a href="<c:url value="/anime/editar/${v.codigo }"/>">Editar</a></td>
+ <td> <a href="<c:url value="/anime/remover/${v.codigo }"/>">Excluir</a></td>
  </tr>
  </c:forEach>
  </table>
  </jsp:body>
  
  </tags:template>
+ </div>
