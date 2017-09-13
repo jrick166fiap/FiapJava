@@ -52,18 +52,18 @@ public class AcessorioController {
 	@GetMapping("editar/{id}")
 	public ModelAndView abrirForm(@PathVariable("id") int id){
 		
+		Acessorio acessorio = dao.pesquisar(id);
 		ModelAndView retorno = new ModelAndView("acessorio/editar");
-		retorno.addObject("acessorio", dao.pesquisar(id));
+		retorno.addObject("acessorio",acessorio);
 		
 		return retorno;
 		
 	}
 	
-	@PostMapping("editar/{id}")
+	@PostMapping("editar")
 	@Transactional
-	public ModelAndView processForm(@PathVariable("id") int id,Acessorio acessorio,RedirectAttributes redirect){
+	public ModelAndView processForm(Acessorio acessorio,RedirectAttributes redirect){
 		
-		acessorio.setCodigo(id);
 		dao.alterar(acessorio);
 		redirect.addFlashAttribute("msg","Alterado com Sucesso");
 		

@@ -16,15 +16,18 @@
 <table class="table">
 
 <tr>
-	<th>Modelo</th>
+	
 	<th>Marca</th>
+	<th>Modelo</th>
 	<th>Placa</th>
+	<th>Cor</th>
 	</tr>
 	<c:forEach items="${listao}" var="v"> 
 	<tr>
-	 <td>${v.modelo}</td>
 	 <td>${v.marca}</td>
+	 <td>${v.modelo}</td>
 	 <td>${v.placa}</td>
+	 <td>${v.cor}</td>
 	 <td> <a href="<c:url value="/veiculo/editar/${v.codigo }"/>">Alterar</a></td>
 	 <td> <a href="<c:url value="/veiculo/remover/${v.codigo}"/>">Excluir</a></td>
 	 

@@ -62,24 +62,22 @@ public class VeiculoController {
 	@GetMapping("/editar/{id}")
 	public ModelAndView editarForm(@PathVariable("id") int id){
 		
+		Veiculo veiculo = dao.pesquisar(id);
 		ModelAndView retorno = new ModelAndView("veiculo/editar");
 		
-		retorno.addObject(dao.pesquisar(id));
+		retorno.addObject("veiculo",veiculo);
 		
 		return retorno;	
-		
 	}
 	
-	@PostMapping("/editar/{id}")
+	@PostMapping("editar")
 	@Transactional
-	public ModelAndView processaForm(@PathVariable("id") int id, Veiculo veiculo,RedirectAttributes redirect){
-		
-		veiculo.setCodigo(id);
+	public ModelAndView processaEditar(Veiculo veiculo,RedirectAttributes redirect){
+		//veiculo.setCodigo(id);
 		dao.alterar(veiculo);
 		
 		redirect.addFlashAttribute("msg","Alterado com Sucesso");
 		return new ModelAndView("redirect:/veiculo/listar");
-		
 	}
 	
 	@GetMapping("/remover/{id}")

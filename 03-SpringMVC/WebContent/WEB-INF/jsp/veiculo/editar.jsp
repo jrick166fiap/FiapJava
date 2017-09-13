@@ -7,7 +7,10 @@
 <tags:template titulo="Editar Cadastro">
 <jsp:body>
 
-<form:form action="${action}" method="post" commandName="veiculo">
+<c:url value="/veiculo/editar" var="link"></c:url>
+<form:form action="${link}" method="post" commandName="veiculo">
+
+<form:hidden path="codigo"/>
 
 <div class="form-group">
 <form:label path="marca">Marca</form:label>

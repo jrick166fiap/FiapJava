@@ -7,8 +7,10 @@
 <tags:template titulo="Editar Acessório">
 <jsp:body>
 
+<c:url value="/acessorio/editar" var="link"></c:url>
+<form:form action="${link}" method="post" commandName="acessorio">
 
-<form:form action="${action}" method="post" commandName="acessorio">
+<form:hidden path="codigo"/>
 
 <div class="form-group">
 <form:label path="nome">Nome</form:label>
@@ -25,7 +27,8 @@
 <form:checkbox path="disponivel"/>
 </div>
 
-<input type="submit" value="Alterar">
+<input type="submit" value="Alterar" class="btn btn-primary">
+<a href="/03-SpringMVC/acessorio/lista" class="btn btn-primary">Voltar</a>
 </form:form>
 </jsp:body>
 
