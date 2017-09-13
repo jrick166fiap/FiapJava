@@ -15,6 +15,7 @@
 
 </c:if>
 
+<h1>Lista de Acessórios</h1>
 <table class="table">
 
 <tr>

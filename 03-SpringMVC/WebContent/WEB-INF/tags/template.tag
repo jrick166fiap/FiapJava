@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ attribute name="titulo" required="true" %>
 <%@ attribute name="script" fragment="true" %>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -20,16 +21,45 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    
       <li class="nav-item active">
         <a class="nav-link" href="cadastrar">Cadastrar <span class="sr-only">(current)</span></a>
+        
       </li>
       <li class="nav-item">
         <a class="nav-link" href="listar">Listar</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+      
+  <li class="dropdown nav-link">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Veículo<b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+    	<li>
+      <a class="nav-link" href="<c:url value="/veiculo/cadastrar/"/>">Cadastrar</a>
+      
+      	</li>
+      	<li>
+      <a class="nav-link" href="<c:url value="/veiculo/listar/"/>">Listar</a>
       </li>
     </ul>
+  </li>
+
+
+<li class="dropdown nav-link">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acessório<b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+    <li>
+      <a class="nav-link" href="<c:url value="/acessorio/cadastrar/"/>">Cadastrar</a>
+      </li>
+      <li>
+      <a class="nav-link" href="<c:url value="/acessorio/listar/"/>">Listar</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+		
+     
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
