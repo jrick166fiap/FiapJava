@@ -70,14 +70,12 @@ public class AcessorioController {
 		return new ModelAndView("redirect:/acessorio/listar");	
 	}
 	
-	
-	@GetMapping("remover/{id}")
+	@PostMapping("remover")
 	@Transactional
-	public ModelAndView processForm(@PathVariable("id") int id,RedirectAttributes redirect){
-		
+	public ModelAndView processForm(int codigo,RedirectAttributes redirect){
 		
 		try {
-			dao.remover(id);
+			dao.remover(codigo);
 			redirect.addFlashAttribute("msg","Removido com Sucesso");
 		} catch (IdNotFoundException e) {
 			// TODO Auto-generated catch block

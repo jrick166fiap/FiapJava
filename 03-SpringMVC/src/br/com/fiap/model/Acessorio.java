@@ -16,9 +16,20 @@ public class Acessorio {
 	
 	private String nome;
 	
+	private double preco;
+	
 	private String descricao;
 	
 	private boolean disponivel;
+	
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
 
 	public int getCodigo() {
 		return codigo;

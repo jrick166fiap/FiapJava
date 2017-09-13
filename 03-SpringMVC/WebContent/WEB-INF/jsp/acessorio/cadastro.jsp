@@ -15,6 +15,11 @@
 </div>
 
 <div class="form-group">
+<form:label path="preco">Preco</form:label>
+<form:input path="preco" cssClass="form-control"/>
+</div>
+
+<div class="form-group">
 <form:label path="descricao">Descrição</form:label>
 <form:input path="descricao" cssClass="form-control"/>
 </div>

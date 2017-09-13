@@ -80,12 +80,12 @@ public class VeiculoController {
 		return new ModelAndView("redirect:/veiculo/listar");
 	}
 	
-	@GetMapping("/remover/{id}")
+	@PostMapping("remover")
 	@Transactional
-	public ModelAndView excluir(@PathVariable("id") int id,RedirectAttributes redirect){
+	public ModelAndView excluir(int codigo ,RedirectAttributes redirect){
 		
 		try {
-			dao.remover(id);
+			dao.remover(codigo);
 			redirect.addFlashAttribute("msg", "Excluído com Sucesso");
 		} catch (IdNotFoundException e) {
 			// TODO Auto-generated catch block
