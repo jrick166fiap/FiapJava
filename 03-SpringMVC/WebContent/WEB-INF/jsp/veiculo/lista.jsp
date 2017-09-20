@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,6 +19,7 @@
 			<th>Modelo</th>
 			<th>Placa</th>
 			<th>Cor</th>
+			<th>Data de Fabricação</th>
 		</tr>
 		<c:forEach items="${listao}" var="v">
 			<tr>
@@ -25,6 +27,10 @@
 				<td>${v.modelo}</td>
 				<td>${v.placa}</td>
 				<td>${v.cor}</td>
+				<td>
+				<fmt:formatDate value="${v.dataFabricacao.time}" pattern="dd/MM/yyyy" />
+				
+				</td>
 				<td><a href="<c:url value="/veiculo/editar/${v.codigo }" /> "
 					class="btn btn-primary btn-xs">Alterar</a>
 				<td>

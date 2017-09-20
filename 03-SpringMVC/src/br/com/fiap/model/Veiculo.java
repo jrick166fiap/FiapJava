@@ -1,10 +1,21 @@
 package br.com.fiap.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @SequenceGenerator(name="seqVeiculo",sequenceName="SQ_VEICULO",allocationSize =1)
@@ -14,13 +25,35 @@ public class Veiculo {
 	@GeneratedValue(generator="seqVeiculo",strategy=GenerationType.SEQUENCE)
 	private int codigo;
 	
+	@NotBlank
 	private String marca;
+	
+	@NotBlank
 	private String modelo;
+	
+	
 	private String cor;
+	
+	@NotBlank
+	@Size(max = 7)
 	private String placa;
+	
+	@Max(2020)
+	@Min(1900)
 	private int ano;
 	
+	@Past
+	@Temporal(TemporalType.DATE)
+	//@DateTimeFormat(pattern="dd/MM/yyyy")
+	private Calendar dataFabricacao;
 	
+	
+	public Calendar getDataFabricacao() {
+		return dataFabricacao;
+	}
+	public void setDataFabricacao(Calendar dataFabricacao) {
+		this.dataFabricacao = dataFabricacao;
+	}
 	public int getCodigo() {
 		return codigo;
 	}

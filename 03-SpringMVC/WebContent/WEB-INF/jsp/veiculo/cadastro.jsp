@@ -18,23 +18,40 @@
 	<div class="form-group">
 	<form:label path="marca">Marca</form:label>
 	<form:input path="marca" cssClass="form-control" />
+	<form:errors path="marca" cssClass="text-danger"  />
 	</div>
+	
 	<div class="form-group">
 	<form:label path="modelo">Modelo</form:label>
 	<form:input path="modelo" cssClass="form-control" />
+	<form:errors path="modelo" cssClass="text-danger"/>
 	</div>
+	
 	<div class="form-group">
 	<form:label path="ano">Ano</form:label>
 	<form:input path="ano" cssClass="form-control" />
+	<form:errors path="ano" cssClass="text-danger"/>
 	</div>
+	
 	<div class="form-group">
 	<form:label path="placa">Placa</form:label>
 	<form:input path="placa" cssClass="form-control" />
+	<form:errors path="placa" cssClass="text-danger"/>
 	</div>
+	
 	<div class="form-group">
 	<form:label path="cor">Cor</form:label>
 	<form:input path="cor" cssClass="form-control" />
+	<form:errors path="cor" cssClass="text-danger"/>
 	</div>
+	
+	<div class="form-group">
+	<form:label path="dataFabricacao">Data Fabricação</form:label>
+	<form:input path="dataFabricacao" cssClass="form-control"/>
+	<form:errors path="dataFabricacao" cssClass="text-danger"/>
+	</div>
+	
+	
 	<input type="submit" value="Salvar" class="btn btn-primary">
 	
 	</form:form>

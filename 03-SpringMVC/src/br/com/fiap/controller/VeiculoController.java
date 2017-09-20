@@ -3,9 +3,12 @@ package br.com.fiap.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,13 +42,21 @@ public class VeiculoController {
     
 	@PostMapping("cadastrar") // Processa as informações do formulário
 	@Transactional
-	public ModelAndView processaForm(Veiculo veiculo,RedirectAttributes redirect) {
+	public ModelAndView processaForm(@Valid Veiculo veiculo, BindingResult result,RedirectAttributes redirect) {
+
+		ModelAndView retorno;
+		//Validar se existe erro de validação.
+		if(result.hasErrors()){
+			retorno = new ModelAndView("veiculo/cadastro");
+			
+		}else{
+		
 		//Cadastrar no banco
 		dao.cadastrar(veiculo);
 		//Retorno... redirecionar para o método listar
-		ModelAndView retorno = new ModelAndView("redirect:/veiculo/listar");
+		retorno = new ModelAndView("redirect:/veiculo/listar");
 		redirect.addFlashAttribute("msg", "Cadastrado com sucesso!");
-		
+		}
 		return retorno;
 	}
 	
@@ -72,12 +83,20 @@ public class VeiculoController {
 	
 	@PostMapping("editar")
 	@Transactional
-	public ModelAndView processaEditar(Veiculo veiculo,RedirectAttributes redirect){
+	public ModelAndView processaEditar(@Valid Veiculo veiculo,BindingResult result,RedirectAttributes redirect){
+		ModelAndView retorno;
+		
+		if(result.hasErrors()){
+			retorno = new ModelAndView ("veiculo/editar");
+			
+		}else{
 		//veiculo.setCodigo(id);
 		dao.alterar(veiculo);
 		
 		redirect.addFlashAttribute("msg","Alterado com Sucesso");
-		return new ModelAndView("redirect:/veiculo/listar");
+		retorno = new ModelAndView("redirect:/veiculo/listar");
+		}
+		return retorno;		
 	}
 	
 	@PostMapping("remover")
